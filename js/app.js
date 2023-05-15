@@ -91,7 +91,7 @@ const loadPhoneDetails = async (id) => {
     displayPhoneDetails(data.data);
 }
 const displayPhoneDetails = (phone) => {
-    console.log(phone);
+    // console.log(phone);
     const modalTitle = document.getElementById('phoneDetailModalLabel');
     modalTitle.innerText = phone.name;
     const phoneDetails = document.getElementById('phone-details');
@@ -101,4 +101,4 @@ const displayPhoneDetails = (phone) => {
         <p>Others: ${phone.others ? phone.others.Bluetooth : "No bluetooth information"}</p>
     `;
 }
-loadPhones('iphone');
+// loadPhones('iphone');
