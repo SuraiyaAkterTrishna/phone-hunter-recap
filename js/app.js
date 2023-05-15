@@ -28,7 +28,7 @@ const displayPhones = (phones , dataLimit) => {
   }
 
   phones.forEach((phone) => {
-    console.log(phone);
+    // console.log(phone);
     const phoneDiv = document.createElement("div");
     phoneDiv.classList.add("col");
     phoneDiv.innerHTML = `
@@ -58,6 +58,13 @@ const processSearch = (dataLimit) => {
 // handle search button click
 document.getElementById("btn-search").addEventListener("click", function () {
   processSearch(10);
+});
+
+// search input field enter key handler 
+document.getElementById('search-field').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        processSearch(10);
+    }
 });
 
 // loading spinner
