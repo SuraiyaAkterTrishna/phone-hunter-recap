@@ -97,6 +97,8 @@ const displayPhoneDetails = (phone) => {
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.innerHTML = `
         <p>Release Date: ${phone.releaseDate ? phone.releaseDate : "No Release Date Found.."}</p>
+        <p>Storage: ${phone.mainFeatures ? phone.mainFeatures.storage : "No Storage Information found"}</p>
+        <p>Others: ${phone.others ? phone.others.Bluetooth : "No bluetooth information"}</p>
     `;
 }
 loadPhones('iphone');
