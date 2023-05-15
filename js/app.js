@@ -1,0 +1,28 @@
+const loadPhones = async () => {
+  const url = `https://openapi.programming-hero.com/api/phones?search=iphone`;
+  const res = await fetch(url);
+  const data = await res.json();
+  displayPhones(data.data);
+};
+const displayPhones = (phones) => {
+  console.log(phones);
+  let phonesContainer = document.getElementById("phone-container");
+//   phonesContainer = ``;
+  phones.forEach((phone) => {
+    // console.log(phone);
+    const phoneDiv = document.createElement("div");
+    phoneDiv.classList.add("col");
+    phoneDiv.innerHTML = `
+    <div class="card h-100">
+        <img src="${phone.image}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">${phone.phone_name}</h5>
+            <p class="card-text">Find here the list of all mobile phones brands of India and Worldwide, Also check latest smartphones from top & best company</p>
+        </div>
+    </div>
+    `;
+    phonesContainer.appendChild(phoneDiv);
+  });
+
+};
+loadPhones();
