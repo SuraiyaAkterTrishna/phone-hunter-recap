@@ -1,13 +1,23 @@
-const loadPhones = async () => {
-  const url = `https://openapi.programming-hero.com/api/phones?search=iphone`;
+const loadPhones = async (searchText) => {
+  const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
   const res = await fetch(url);
   const data = await res.json();
   displayPhones(data.data);
 };
 const displayPhones = (phones) => {
-  console.log(phones);
-  let phonesContainer = document.getElementById("phone-container");
-//   phonesContainer = ``;
+  //   console.log(phones);
+  const phonesContainer = document.getElementById("phone-container");
+  phonesContainer.innerHTML = ``;
+  //   display only 10 phones
+  phones = phones.slice(0, 10);
+  // no phone message
+const noMessage = document.getElementById('no-message');
+if(phones.length === 0) {
+    noMessage.classList.remove('d-none');
+}
+else{
+    noMessage.classList.add('d-none');
+}
   phones.forEach((phone) => {
     // console.log(phone);
     const phoneDiv = document.createElement("div");
@@ -23,6 +33,10 @@ const displayPhones = (phones) => {
     `;
     phonesContainer.appendChild(phoneDiv);
   });
-
 };
-loadPhones();
+document.getElementById("btn-search").addEventListener("click", function () {
+  const searchField = document.getElementById("search-field");
+  const searchText = searchField.value;
+  loadPhones(searchText);
+});
+// loadPhones();
