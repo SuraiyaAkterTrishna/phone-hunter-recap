@@ -37,7 +37,7 @@ const displayPhones = (phones , dataLimit) => {
         <div class="card-body">
             <h5 class="card-title">${phone.phone_name}</h5>
             <p class="card-text">Find here the list of all mobile phones brands of India and Worldwide, Also check latest smartphones from top & best company</p>
-            <button onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-primary">Show Details</button>
+            <button onclick="loadPhoneDetails('${phone.slug}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetailModal">Show Details</button>
         </div>
     </div>
     `;
@@ -92,5 +92,11 @@ const loadPhoneDetails = async (id) => {
 }
 const displayPhoneDetails = (phone) => {
     console.log(phone);
+    const modalTitle = document.getElementById('phoneDetailModalLabel');
+    modalTitle.innerText = phone.name;
+    const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.innerHTML = `
+        <p>Release Date: ${phone.releaseDate ? phone.releaseDate : "No Release Date Found.."}</p>
+    `;
 }
-// loadPhones();
+loadPhones('iphone');
